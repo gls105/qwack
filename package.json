@@ -1,0 +1,16 @@
+{
+  "name": "qwack",
+  "version": "0.1.0",
+  "description": "qwack.ai — agentic desktop app with shell control and remote desktop",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^30.0.0"
+  },
+  "author": "Martin Abondano",
+  "license": "MIT"
+}

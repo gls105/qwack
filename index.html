@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qwack.ai</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Custom titlebar -->
+  <div id="titlebar">
+    <div id="titlebar-drag">
+      <span id="duck-logo">🦆</span>
+      <span id="app-title">qwack.ai</span>
+    </div>
+    <div id="titlebar-controls">
+      <button id="btn-minimize" title="Minimize">─</button>
+      <button id="btn-maximize" title="Maximize">□</button>
+      <button id="btn-close" title="Close">✕</button>
+    </div>
+  </div>
+
+  <!-- Main layout -->
+  <div id="layout">
+
+    <!-- Sidebar: tabs -->
+    <nav id="sidebar">
+      <button class="tab-btn active" data-tab="agent">
+        <span>💬</span><span class="tab-label">Agent</span>
+      </button>
+      <button class="tab-btn" data-tab="terminal">
+        <span>⬛</span><span class="tab-label">Terminal</span>
+      </button>
+      <button class="tab-btn" data-tab="remote">
+        <span>🖥️</span><span class="tab-label">Remote</span>
+      </button>
+      <button class="tab-btn" data-tab="files">
+        <span>📁</span><span class="tab-label">Files</span>
+      </button>
+    </nav>
+
+    <!-- Content area -->
+    <main id="content">
+
+      <!-- AGENT TAB -->
+      <section id="tab-agent" class="tab-panel active">
+        <div id="chat-messages"></div>
+        <div id="chat-input-bar">
+          <textarea id="chat-input" placeholder="Tell qwack what to do... (Shift+Enter for newline)" rows="1"></textarea>
+          <button id="chat-send">Send</button>
+        </div>
+      </section>
+
+      <!-- TERMINAL TAB -->
+      <section id="tab-terminal" class="tab-panel">
+        <div id="terminal-output"></div>
+        <div id="terminal-input-bar">
+          <span id="terminal-prompt">$</span>
+          <input id="terminal-input" type="text" placeholder="run a command..." spellcheck="false" />
+          <button id="terminal-run">Run</button>
+        </div>
+      </section>
+
+      <!-- REMOTE DESKTOP TAB -->
+      <section id="tab-remote" class="tab-panel">
+        <div id="remote-connect-bar">
+          <input id="vnc-host" type="text" placeholder="VNC host (e.g. 192.168.1.100)" />
+          <input id="vnc-port" type="number" placeholder="Port (5900)" value="5900" />
+          <input id="vnc-password" type="password" placeholder="Password (optional)" />
+          <button id="vnc-connect">Connect</button>
+          <button id="vnc-disconnect" disabled>Disconnect</button>
+        </div>
+        <div id="vnc-frame-container">
+          <webview id="vnc-webview" src="about:blank" style="width:100%;height:100%;border:none;"></webview>
+        </div>
+        <p id="remote-hint">Enter a VNC host above to connect. qwack uses noVNC — no extra software needed on this machine.</p>
+      </section>
+
+      <!-- FILES TAB -->
+      <section id="tab-files" class="tab-panel">
+        <div id="files-toolbar">
+          <input id="files-path" type="text" value="" placeholder="/home/user" />
+          <button id="files-go">Go</button>
+        </div>
+        <ul id="files-list"></ul>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
